@@ -1,6 +1,4 @@
 from setuptools import setup
-from glob import glob
-import os
 
 __author__ = "Knights Lab"
 __copyright__ = "Copyright (c) 2016--, %s" % __author__
@@ -13,9 +11,9 @@ __version__ = "0.0.1-dev"
 long_description = ''
 
 setup(
-    name='ninja_dojo',
+    name='ninja_trebuchet',
     version=__version__,
-    packages=['ninja_dojo'],
+    packages=['ninja_trebuchet'],
     url='',
     license=__license__,
     author=__author__,
@@ -24,5 +22,5 @@ setup(
     long_description=long_description,
     # scripts=glob(os.path.join('scripts', '*py')),
     keywords='',
-    install_requires=['click', 'networkx']
+    install_requires=['click']
 )

@@ -1,11 +1,10 @@
-#!/usr/bin/env python
 import os
 import sys
 
 from ninja_shogun.utilities.path import verify_make_dir
 
 
-class Logger(object):
+class Logger:
     """
         A convenient logging object
         Prints output to a given log file and/or stdout
@@ -21,16 +20,16 @@ class Logger(object):
             verify_make_dir(outdir)
 
         self.logfp = logfp
-        logf = open(logfp, 'w')
-        logf.close()
+        log_file = open(logfp, 'w')
+        log_file.close()
         self.use_std_out = use_std_out
 
     def log(self, msg):
         if not msg.endswith('\n'):
             msg += '\n'
         if self.logfp is not None:
-            logf = open(self.logfp, 'a')
-            logf.write(msg)
-            logf.close()
+            log_file = open(self.logfp, 'a')
+            log_file.write(msg)
+            log_file.close()
         if self.use_std_out:
             sys.stdout.write(msg)
