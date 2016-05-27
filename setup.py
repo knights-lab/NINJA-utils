@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 __author__ = "Knights Lab"
 __copyright__ = "Copyright (c) 2016--, %s" % __author__
@@ -13,7 +13,7 @@ long_description = ''
 setup(
     name='ninja_trebuchet',
     version=__version__,
-    packages=['ninja_trebuchet'],
+    packages=find_packages(),
     url='',
     license=__license__,
     author=__author__,
