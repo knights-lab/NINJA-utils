@@ -1,6 +1,6 @@
 from .logger import Logger
 
-__all__ = ['data'
+__all__ = ['factory'
            'config'
            'Logger',
            'path',
