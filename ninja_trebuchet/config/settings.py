@@ -27,7 +27,7 @@ class Settings:
                             default_settings_dict[key] = sm[key]
                         else:
                             if 'dir' in key:
-                                default_settings_dict[key] = os.path.join([self.default_dir] + default_settings_dict[key])
+                                default_settings_dict[key] = os.path.join(*[self.default_dir] + default_settings_dict[key])
                 else:
                     loaded_dict[submodule] = default_settings_dict
                     self.default_dir = os.path.join(config_dir, submodule)
