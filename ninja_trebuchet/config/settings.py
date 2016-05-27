@@ -14,7 +14,7 @@ class Settings:
         if os.path.exists(os.path.join(config_dir, 'SETTINGS.yaml')):
             with open(os.path.join(config_dir, 'SETTINGS.yaml')) as inf_handle:
                 loaded_dict = yaml.load(inf_handle)
-                if submodule in loaded_dict:
+                if loaded_dict and submodule in loaded_dict:
                     sm = loaded_dict[submodule]
 
                     if 'default_dir' in loaded_dict[submodule]:
