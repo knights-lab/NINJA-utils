@@ -34,7 +34,7 @@ class Settings:
             self.default_dir = os.path.join(config_dir, submodule)
             for name in default_settings_dict:
                 if 'dir' in name:
-                    path = os.path.join([self.default_dir] + default_settings_dict[name])
+                    path = os.path.join(*[self.default_dir] + default_settings_dict[name])
                     verify_make_dir(path)
                     default_settings_dict[name] = path
             loaded_dict = {submodule: default_settings_dict}
