@@ -1,1 +1,8 @@
-__all__ = ['config', 'data', 'parsers', 'logger', 'path', 'util']
+from .logger import Logger
+
+__all__ = ['data'
+           'config'
+           'Logger',
+           'path',
+           'parsers',
+           'util']
