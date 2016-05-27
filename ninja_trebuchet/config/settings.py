@@ -3,7 +3,7 @@ from collections import defaultdict
 from multiprocessing import cpu_count
 
 import yaml
-from ninja_shogun.utilities.path import verify_make_dir
+from ..path import verify_make_dir
 
 
 class Settings:
