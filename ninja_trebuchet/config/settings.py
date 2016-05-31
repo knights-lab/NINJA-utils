@@ -48,5 +48,8 @@ class Settings:
 
         self.N_jobs = default_settings_dict['N_jobs']
 
+        if 'log' not in default_settings_dict:
+            default_settings_dict['log'] = os.path.join(self.default_dir, submodule + '_log.txt')
+
         with open(os.path.join(config_dir, 'SETTINGS.yaml'), 'w') as outf_handle:
             yaml.dump(loaded_dict, outf_handle)
