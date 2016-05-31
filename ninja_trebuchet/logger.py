@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 from .path import verify_make_dir
 
@@ -25,11 +26,11 @@ class Logger:
         self.use_std_out = use_std_out
 
     def log(self, msg):
-        if not msg.endswith('\n'):
-            msg += '\n'
+        if not msg.endswith(os.linesep):
+            msg += os.linesep
         if self.logfp is not None:
             log_file = open(self.logfp, 'a')
-            log_file.write(msg)
+            log_file.write('[%s] %s' % (time.strftime("%x %X", time.localtime()), msg))
             log_file.close()
-        if self.use_std_out:
+        elif self.use_std_out:
             sys.stdout.write(msg)
