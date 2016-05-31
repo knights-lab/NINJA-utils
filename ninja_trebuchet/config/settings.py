@@ -22,26 +22,21 @@ class Settings:
                     else:
                         self.default_dir = os.path.join(config_dir, submodule)
 
-                    for key in default_settings_dict.keys():
-                        if key not in sm_dict:
+                    for key in sm_dict:
+                        if key in default_settings_dict:
                             if 'dir' in key:
-                                sm_dict[key] = os.path.join(*[self.default_dir] + default_settings_dict[key])
-                            else:
-                                sm_dict[key] = default_settings_dict[key]
+                                verify_make_dir(sm_dict[key])
+                            default_settings_dict[key] = sm_dict[key]
                 else:
-                    loaded_dict[submodule] = default_settings_dict
                     self.default_dir = os.path.join(config_dir, submodule)
 
         else:
             self.default_dir = os.path.join(config_dir, submodule)
             for name in default_settings_dict:
                 if 'dir' in name:
-                    path = os.path.join(*[self.default_dir] + default_settings_dict[name])
+                    path = os.path.abspath(os.path.join(*[self.default_dir] + default_settings_dict[name]))
                     verify_make_dir(path)
                     default_settings_dict[name] = path
-            loaded_dict = {submodule: default_settings_dict}
-
-        self.settings = loaded_dict[submodule]
 
         if 'N_jobs' not in default_settings_dict:
             default_settings_dict['N_jobs'] = cpu_count()
@@ -50,6 +45,10 @@ class Settings:
 
         if 'log' not in default_settings_dict:
             default_settings_dict['log'] = os.path.join(self.default_dir, submodule + '_log.txt')
+
+        loaded_dict = {submodule: default_settings_dict}
+
+        self.settings = loaded_dict[submodule]
 
         with open(os.path.join(config_dir, 'SETTINGS.yaml'), 'w') as outf_handle:
             yaml.dump(loaded_dict, outf_handle)
