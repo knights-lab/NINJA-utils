@@ -21,18 +21,16 @@ class Logger:
             verify_make_dir(outdir)
 
         self.logfp = logfp
-        if log_persist:
-            log_file = open(logfp, 'w+')
-        else:
+        if not log_persist:
             log_file = open(logfp, 'w')
-        log_file.close()
+            log_file.close()
         self.use_std_out = use_std_out
 
     def log(self, msg):
         if not msg.endswith(os.linesep):
             msg += os.linesep
         if self.logfp is not None:
-            log_file = open(self.logfp, 'a')
+            log_file = open(self.logfp, 'a+')
             log_file.write('[%s] %s' % (time.strftime("%x %X", time.localtime()), msg))
             log_file.close()
         elif self.use_std_out:
