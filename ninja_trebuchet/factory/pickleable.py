@@ -7,7 +7,7 @@ from ..config.settings import Settings
 
 class Pickleable:
     def __init__(self, settings: Settings, logger: Logger):
-        self.pickle_dir = settings.get_path['pickle_dir']
+        self.pickle_dir = settings.get_path('pickle_dir')
         self.dump = os.path.join(self.pickle_dir, "%s.pkl" % self.__class__.__name__)
         saved = os.path.isfile(self.dump)
         if not saved:

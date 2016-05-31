@@ -55,3 +55,6 @@ class Settings:
 
         with open(os.path.join(config_dir, 'SETTINGS.yaml'), 'w') as outf_handle:
             yaml.dump(loaded_dict, outf_handle)
+
+    def get_path(self, name):
+        return os.path.abspath(self.settings[name])
