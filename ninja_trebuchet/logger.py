@@ -11,7 +11,7 @@ class Logger:
         Prints output to a given log file and/or stdout
     """
 
-    def __init__(self, logfp=None, use_std_out=True):
+    def __init__(self, logfp=None, use_std_out=True, log_persist=False):
         # note: if logfp directories don't exist, make them.
 
         if logfp is not None:
@@ -21,7 +21,10 @@ class Logger:
             verify_make_dir(outdir)
 
         self.logfp = logfp
-        log_file = open(logfp, 'w')
+        if log_persist:
+            log_file = open(logfp, 'w+')
+        else:
+            log_file = open(logfp, 'w')
         log_file.close()
         self.use_std_out = use_std_out
 

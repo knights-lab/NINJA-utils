@@ -46,6 +46,9 @@ class Settings:
         if 'log' not in default_settings_dict:
             default_settings_dict['log'] = os.path.join(self.default_dir, submodule + '_log.txt')
 
+        if 'log_persists' not in default_settings_dict:
+            default_settings_dict['log_persists'] = False
+
         loaded_dict = {submodule: default_settings_dict}
 
         self.settings = loaded_dict[submodule]
