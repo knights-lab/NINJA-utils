@@ -15,7 +15,7 @@ class Settings:
             with open(os.path.join(config_dir, 'SETTINGS.yaml')) as inf_handle:
                 loaded_dict = yaml.load(inf_handle)
                 if loaded_dict and submodule in loaded_dict:
-                    sm = loaded_dict[submodule]
+                    sm_dict = loaded_dict[submodule]
 
                     if 'default_dir' in loaded_dict[submodule]:
                         self.default_dir = loaded_dict[submodule]['default_dir']
@@ -23,11 +23,11 @@ class Settings:
                         self.default_dir = os.path.join(config_dir, submodule)
 
                     for key in default_settings_dict.keys():
-                        if not key in sm:
+                        if key not in sm_dict:
                             if 'dir' in key:
-                                sm[key] = os.path.join(*[self.default_dir] + default_settings_dict[key])
+                                sm_dict[key] = os.path.join(*[self.default_dir] + default_settings_dict[key])
                             else:
-                                sm[key] = default_settings_dict[key]
+                                sm_dict[key] = default_settings_dict[key]
                 else:
                     loaded_dict[submodule] = default_settings_dict
                     self.default_dir = os.path.join(config_dir, submodule)
