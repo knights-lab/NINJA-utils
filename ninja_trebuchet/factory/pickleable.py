@@ -26,7 +26,7 @@ class Pickleable:
 
     @classmethod
     def load(cls, settings: Settings, logger: Logger) -> object:
-        pickle_dir = os.path.join(settings.get_path['pickle_dir'])
+        pickle_dir = settings.get_path('pickle_dir')
         try:
             self_dump = os.path.join(pickle_dir, "%s.pkl" % cls.__name__)
             with open(self_dump, 'rb') as handle:
