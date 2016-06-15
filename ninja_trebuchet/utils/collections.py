@@ -19,3 +19,20 @@ def stream_gzip_decompress(stream):
         rv = dec.decompress(chunk)
         if rv:
             yield rv
+
+
+def line_bytestream_gzip(in_fh):
+    leftovers = b''
+    for chunk in stream_gzip_decompress(in_fh):
+        chunk = leftovers + chunk
+        if chunk.endswith(b'\n'):
+            for line in chunk.rstrip(b'\n').split(b'\n'):
+                yield line
+            leftovers = b''
+        else:
+            lines = chunk.split(b'\n')
+            while len(lines) > 1:
+                yield lines.pop(0)
+            leftovers = lines.pop()
+    if leftovers:
+        yield leftovers
