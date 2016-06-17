@@ -30,8 +30,18 @@ class Settings:
                 else:
                     self.default_dir = os.path.join(config_dir, submodule)
 
+            # sometimes a path will still be in list form from default dir
+            # make the paths that are
+            for name in default_settings_dict:
+                if 'dir' in name:
+                    value = default_settings_dict[name]
+                    if isinstance(value, list):
+                        path = os.path.abspath(os.path.join(*[self.default_dir] + value))
+                        verify_make_dir(path)
+                        default_settings_dict[name] = path
         else:
             self.default_dir = os.path.join(config_dir, submodule)
+
             for name in default_settings_dict:
                 if 'dir' in name:
                     path = os.path.abspath(os.path.join(*[self.default_dir] + default_settings_dict[name]))
