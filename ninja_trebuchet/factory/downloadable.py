@@ -44,6 +44,7 @@ class Downloadable(Scroll):
 
 def download(func):
     def download_wrapper(self, *args, **kwargs):
-        self._downloader()
+        for downloader in self._downloaders:
+            downloader()
         return func(self, *args, **kwargs)
     return download_wrapper
