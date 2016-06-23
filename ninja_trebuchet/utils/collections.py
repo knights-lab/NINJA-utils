@@ -8,9 +8,13 @@ def reverse_dict(d):
 
 def download_txt_url(path_to_file, url):
     with urllib.request.urlopen(url) as stream:
+        CHUNK = 2 ** 14
         with open(path_to_file, 'wb') as outfile:
-            for line in stream:
-                outfile.write(line)
+            while True:
+                chunk = stream.read(CHUNK)
+                if not chunk:
+                    break
+                outfile.write(chunk)
 
 
 def stream_gzip_decompress(stream):
