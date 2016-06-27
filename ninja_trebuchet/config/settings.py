@@ -2,7 +2,7 @@ import os
 from multiprocessing import cpu_count
 
 import yaml
-from ninja_trebuchet.path import verify_make_dir
+from ..path import verify_make_dir
 
 
 class Settings:

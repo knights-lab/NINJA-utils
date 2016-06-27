@@ -11,7 +11,7 @@ __version__ = "0.0.1-dev"
 long_description = ''
 
 setup(
-    name='ninja_trebuchet',
+    name='ninja_utils',
     version=__version__,
     packages=find_packages(),
     url='',
