@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 __author__ = "Knights Lab"
 __copyright__ = "Copyright (c) 2016--, %s" % __author__
-__credits__ = ["Benjamin Hillmann", "Dan Knights", "Gabe Al-Ghalith", "Tonya Ward", "Pajua Vangay"]
+__credits__ = ["Benjamin Hillmann", "Gabe Al-Ghalith", "Tonya Ward", "Pajua Vangay", "Dan Knights"]
 __email__ = "hillmannben@gmail.com"
 __license__ = "GPL"
 __maintainer__ = "Benjamin Hillmann"
