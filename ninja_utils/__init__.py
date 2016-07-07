@@ -5,4 +5,4 @@ __all__ = ['factory'
            'Logger',
            'path',
            'parsers',
-           'util']
+           'utils']
