@@ -40,3 +40,13 @@ def line_bytestream_gzip(in_fh):
             leftovers = lines.pop()
     if leftovers:
         yield leftovers
+
+
+# Given a string, and start and end string, return the sandwiched string within the the original string
+def find_between(s, first, last):
+    try:
+        start = s.index(first) + len(first)
+        end = s.index(last, start)
+        return s[start:end]
+    except ValueError:
+        return ""
