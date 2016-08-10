@@ -6,7 +6,7 @@ import sys
 @click.option('-i', '--input', type=click.File('rb'), default='-')
 @click.option('-o', '--output', type=click.File('wb'), default='-')
 def linearize_fasta(input, output):
-    output.write(next(input).rstrip() + b'\n')
+    output.write(next(input).rstrip(b'\r\n') + b'\n')
     for line in input:
             if line[0] == b'>':
                     output.write(b'\n' + line)
