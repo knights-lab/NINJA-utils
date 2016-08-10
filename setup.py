@@ -23,6 +23,7 @@ setup(
     entry_points={
         'console_scripts': [
             'soft_mask2hard_mask = ninja_utils.scripts.soft_mask2hard_mask:soft_mask2hard_mask',
+            'linearize_fasta = ninja_utils.scripts.linearize_fasta:linearize_fasta',
         ]
     },
     # scripts=glob(os.path.join('scripts', '*py')),
