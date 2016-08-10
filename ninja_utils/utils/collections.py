@@ -1,5 +1,11 @@
 import urllib.request
 import zlib
+import os
+
+
+def verify_make_dir(outdir):
+    if not os.path.exists(outdir):
+        os.makedirs(outdir)
 
 
 def reverse_dict(d):
