@@ -13,7 +13,7 @@ def soft_mask2hard_mask(input, output):
 
     for title, seq in fasta_gen.read():
         output.write('>%s\n' % title)
-        output.write('%s\n' % re.sub('[^a-z]', 'N', seq))
+        output.write('%s\n' % re.sub('[^A-Z]', 'N', seq))
 
 if __name__ == '__main__':
     soft_mask2hard_mask()
