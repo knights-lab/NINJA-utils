@@ -3,16 +3,16 @@ import click
 import sys
 
 @click.command()
-@click.option('-i', '--input', type=click.File('rb'), default='-')
-@click.option('-o', '--output', type=click.File('wb'), default='-')
+@click.option('-i', '--input', type=click.File('r'), default='-')
+@click.option('-o', '--output', type=click.File('w'), default='-')
 def linearize_fasta(input, output):
-    output.write(next(input).rstrip(b'\r\n') + b'\n')
+    output.write(next(input).rstrip() + '\n')
     for line in input:
-            if line[0] == b'>':
-                    output.write(b'\n' + line)
-            else:
-                    output.write(line[:-2])
-    output.write(b'\n')
+        if line[0] == '>':
+                output.write('\n' + line)
+        else:
+                output.write(line.rstrip())
+    output.write('\n')
 
 if __name__ == '__main__':
     linearize_fasta()
