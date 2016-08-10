@@ -6,7 +6,7 @@ from ninja_utils.parsers import FASTA
 
 
 @click.command()
-@click.option('-i', '--input', type=click.File('r'))
+@click.option('-i', '--input', type=click.File('r'), default='-')
 @click.option('-o', '--output', type=click.File('w'), default='-')
 def soft_mask2hard_mask(input, output):
     fasta_gen = FASTA(input)
