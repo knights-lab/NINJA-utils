@@ -20,6 +20,11 @@ setup(
     author_email=__email__,
     description='',
     long_description=long_description,
+    entry_points={
+        'console_scripts': [
+            'soft_mask2hard_mask = ninja_utils.scripts.soft_mask2hard_mask:soft_mask2hard_mask',
+        ]
+    },
     # scripts=glob(os.path.join('scripts', '*py')),
     keywords='',
     install_requires=['click', 'pyyaml']
