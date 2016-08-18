@@ -1,6 +1,7 @@
 import urllib.request
 import zlib
 import os
+from collections import defaultdict
 
 
 def verify_make_dir(outdir):
@@ -10,6 +11,13 @@ def verify_make_dir(outdir):
 
 def reverse_dict(d):
     return {v: k for k, v in d.items()}
+
+
+def reverse_collision_dict(d)
+    reversed_dict = defaultdict(list)
+    for key,value in mydict.iteritems():
+        reversed_dict[value].append(key)
+    return reversed_dict
 
 
 def download_txt_url(path_to_file, url):
