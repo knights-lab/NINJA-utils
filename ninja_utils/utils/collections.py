@@ -13,7 +13,7 @@ def reverse_dict(d):
     return {v: k for k, v in d.items()}
 
 
-def reverse_collision_dict(d)
+def reverse_collision_dict(d):
     reversed_dict = defaultdict(list)
     for key,value in mydict.iteritems():
         reversed_dict[value].append(key)
