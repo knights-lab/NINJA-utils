@@ -2,7 +2,7 @@
 from subprocess import Popen, PIPE
 import sys
 import math
-from timeit import default_timer as timer
+from time import process_time as timer
 
 def convertSize(size):
    if (size == 0):
@@ -15,10 +15,10 @@ def convertSize(size):
 
 # This script prints the maximum memory usage in KB for a task
 def timeit():
-    p = Popen(['time', '-f', '%M'] + sys.argv[1:], stderr=PIPE)
     start_time = timer()
+    p = Popen(['time', '-f', '%M'] + sys.argv[1:], stderr=PIPE)
     ru_maxrss = int(p.communicate()[1])
-    print("Time %d seconds" % timer() - star)
+    print("Time %.06f seconds" % (timer() - start_time))
     print("Maximum rss %s" % convertSize(ru_maxrss))
 
 if __name__ == '__main__':
