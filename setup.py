@@ -25,6 +25,7 @@ setup(
             'soft_mask2hard_mask = ninja_utils.scripts.soft_mask2hard_mask:soft_mask2hard_mask',
             'linearize_fasta = ninja_utils.scripts.linearize_fasta:linearize_fasta',
             'timeit = ninja_utils.scripts.timeit:timeit',
+            'subset_fasta = ninja_utils.scripts.subset_fasta:subset_fasta',
         ]
     },
     # scripts=glob(os.path.join('scripts', '*py')),
