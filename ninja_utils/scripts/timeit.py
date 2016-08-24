@@ -18,7 +18,7 @@ def timeit():
     p = Popen(['time', '-f', '%M'] + sys.argv[1:], stderr=PIPE)
     start_time = timer()
     ru_maxrss = int(p.communicate()[1])
-    print("Time %s" % timer() - start_time)
+    print("Time %d seconds" % timer() - star)
     print("Maximum rss %s" % convertSize(ru_maxrss))
 
 if __name__ == '__main__':
