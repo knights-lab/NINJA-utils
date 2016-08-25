@@ -9,7 +9,7 @@ from ninja_utils.parsers import FASTA
 
 def make_arg_parser():
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('-i', '--input', required=True, help='If nothing is given, then stdin, else the input file')
+    parser.add_argument('-i', '--input', required=True, help='The input FASTA file')
     parser.add_argument('-o', '--output', help='If nothing is given, then stdout, else write to file')
     parser.add_argument('-k', '--keep', help='The number of sequences to keep', required=True, type=int)
     return parser
@@ -28,7 +28,6 @@ def subset_fasta():
     with open(args.input) as inf:
         fasta = FASTA(inf)
         num_reads = sum(1 for i in fasta.read())
-        print(num_reads)
     with open(args.input) as inf:
         fasta = FASTA(inf)
         fasta_gen = fasta.read()
