@@ -15,7 +15,7 @@ def filter_dusted_fasta(input, threshold, output):
     for title, seq in fasta_gen.read():
         seq = re.sub('[^A-Z]', 'N', seq)
         hits = sum(1.0 for i in seq if not i == 'N')
-        if hits/len(seq) > threshold:
+        if len(seq) and hits and hits/len(seq) > threshold:
             output.write('>%s\n' % title)
             output.write('%s\n' % re.sub('[^A-Z]', 'N', seq))
 
