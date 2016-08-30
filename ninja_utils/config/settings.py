@@ -17,8 +17,8 @@ class Settings:
                 if loaded_dict and submodule in loaded_dict:
                     sm_dict = loaded_dict[submodule]
 
-                    if 'default_dir' in loaded_dict[submodule]:
-                        self.default_dir = loaded_dict[submodule]['default_dir']
+                    if 'default_dir' in sm_dict:
+                        self.default_dir = sm_dict['default_dir']
                     else:
                         self.default_dir = os.path.join(config_dir, submodule)
 
@@ -59,12 +59,12 @@ class Settings:
         if 'log_persists' not in default_settings_dict:
             default_settings_dict['log_persists'] = False
 
-        loaded_dict = {submodule: default_settings_dict}
-
-        self.settings = loaded_dict[submodule]
+        loaded_dict[submodule] = default_settings_dict
 
         with open(os.path.join(config_dir, 'SETTINGS.yaml'), 'w') as outf_handle:
             yaml.dump(loaded_dict, outf_handle)
+
+        self.settings = default_settings_dict
 
     def get_path(self, name):
         return os.path.abspath(self.settings[name])
