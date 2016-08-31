@@ -5,14 +5,13 @@ import os
 from ninja_utils.parsers import FASTA, FASTQ2
 
 
-@click.group(chain=True)
+@click.group(chain=True, invoke_without_command=True)
 def cli():
     """This script processes a bunch of images through pillow in a unix
     pipe.  One commands feeds into the next.
     Example:
-    \b
-        imagepipe open -i example01.jpg resize -w 128 display
-        imagepipe open -i example02.jpg blur save
+    imagepipe open -i example01.jpg resize -w 128 display
+    imagepipe open -i example02.jpg blur save
     """
 
 
@@ -23,16 +22,11 @@ def process_commands(processors):
     we can chain them together to feed one into the other, similar to how
     a pipe on unix works.
     """
-    # Start with an empty iterable.
-    stream = ()
-
-    # Pipe it through all stream processors.
+    iterator = ()
     for processor in processors:
-        stream = processor(stream)
-
-    # Evaluate the stream and throw away the items.
-    for _ in stream:
-        pass
+        iterator = processor(iterator)
+    for item in iterator:
+        click.echo(item)
 
 
 def processor(f):

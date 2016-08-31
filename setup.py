@@ -20,17 +20,21 @@ setup(
     author_email=__email__,
     description='',
     long_description=long_description,
-    entry_points={
-        'console_scripts': [
-            'soft_mask2hard_mask = ninja_utils.scripts.soft_mask2hard_mask:soft_mask2hard_mask',
-            'linearize_fasta = ninja_utils.scripts.linearize_fasta:linearize_fasta',
-            'timeit = ninja_utils.scripts.timeit:timeit',
-            'subset_fasta = ninja_utils.scripts.subset_fasta:subset_fasta',
-            'fastq_to_fasta = ninja_utils.scripts.fastq_to_fasta:fastq_to_fasta',
-            'filter_dusted_fasta = ninja_utils.scripts.filter_dusted_fasta:filter_dusted_fasta',
-            'ninja_utils = ninja_utils.cli.ninja_utils:cli',
-        ]
-    },
+    entrey_points='''
+        [console_scripts]
+        ninja_utils=ninja_utils.cli.ninja_utils:cli
+    ''',
+    # entry_points={
+    #     'console_scripts] [
+    #         'soft_mask2hard_mask = ninja_utils.scripts.soft_mask2hard_mask:soft_mask2hard_mask',
+    #         'linearize_fasta = ninja_utils.scripts.linearize_fasta:linearize_fasta',
+    #         'timeit = ninja_utils.scripts.timeit:timeit',
+    #         'subset_fasta = ninja_utils.scripts.subset_fasta:subset_fasta',
+    #         'fastq_to_fasta = ninja_utils.scripts.fastq_to_fasta:fastq_to_fasta',
+    #         'filter_dusted_fasta = ninja_utils.scripts.filter_dusted_fasta:filter_dusted_fasta',
+    #         'ninja_utils = ninja_utils.cli.ninja_utils:cli',
+    #     ]
+    # },
     # scripts=glob(os.path.join('scripts', '*py')),
     keywords='',
     install_requires=['click', 'pyyaml']
