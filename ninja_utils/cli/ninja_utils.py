@@ -95,7 +95,7 @@ def cmd_open_fastq(fastqs):
               help='The filename.',
               show_default=True)
 @processor
-def cmd_fasta_to_fastq(fastqs, filename):
+def cmd_fastq_to_fasta(fastqs, filename):
     for fastq in fastqs:
         try:
             fn_outf_fastq = filename % '.'.join(os.path.basename(fastq.filename).split('.')[:-1])

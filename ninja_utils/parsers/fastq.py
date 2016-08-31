@@ -24,7 +24,6 @@ class FASTQ:
 class FASTQ2:
     def __init__(self, filename):
         self.filename = filename
-        self.fp.close()
 
     def read(self):
         line = next(self.fp)
