@@ -5,7 +5,7 @@ import os
 from ninja_utils.parsers import FASTA, FASTQ2
 
 
-@click.group(chain=True, invoke_without_command=True)
+@click.group(chain=True)
 def cli():
     """This script processes a bunch of images through pillow in a unix
     pipe.  One commands feeds into the next.
