@@ -20,7 +20,7 @@ setup(
     author_email=__email__,
     description='',
     long_description=long_description,
-    entrey_points='''
+    entry_points='''
         [console_scripts]
         ninja_utils=ninja_utils.cli.ninja_utils:cli
     ''',
