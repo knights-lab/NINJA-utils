@@ -7,7 +7,13 @@ from ninja_utils.parsers import FASTA, FASTQ2
 
 @click.group(chain=True)
 def cli():
-    pass
+    """This script processes a bunch of images through pillow in a unix
+    pipe.  One commands feeds into the next.
+    Example:
+    \b
+        imagepipe open -i example01.jpg resize -w 128 display
+        imagepipe open -i example02.jpg blur save
+    """
 
 
 @cli.resultcallback()
