@@ -84,8 +84,7 @@ def cmd_open_fastq(fastqs):
     for fastq in fastqs:
         try:
             click.echo('Opening "%s"' % fastq)
-            with FASTQ2(fastq) as gen_fastq:
-                yield gen_fastq
+            yield FASTQ2(fastq)
         except Exception as e:
             click.echo('Could not open FASTQ "%s": %s' % (fastq, e), err=True)
 
@@ -99,8 +98,10 @@ def cmd_fastq_to_fasta(fastqs, filename):
     for fastq in fastqs:
         try:
             fn_outf_fastq = filename % '.'.join(os.path.basename(fastq.filename).split('.')[:-1])
-            with click.open_file(fn_outf_fastq, 'w') as outf:
-                for header, sequence, qualities in fastq.read():
-                    outf.write('>%s\n%s\n' % (header, sequence))
+            with fastq as fh_fastq:
+                with click.open_file(fn_outf_fastq, 'w') as outf:
+                    for header, sequence, qualities in fh_fastq:
+                        outf.write('>%s\n%s\n' % (header, sequence))
+            yield 'Done converting "%s" to FASTA file at "%s"' % (fastq.filename, fn_outf_fastq)
         except Exception as e:
             click.echo('Could not save image "%s": %s' % (fastq.filename, e), err=True)
