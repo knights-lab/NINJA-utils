@@ -28,6 +28,7 @@ setup(
             'subset_fasta = ninja_utils.scripts.subset_fasta:subset_fasta',
             'fastq_to_fasta = ninja_utils.scripts.fastq_to_fasta:fastq_to_fasta',
             'filter_dusted_fasta = ninja_utils.scripts.filter_dusted_fasta:filter_dusted_fasta',
+            'ninja_utils = ninja_utils.cli.ninja_utils:cli',
         ]
     },
     # scripts=glob(os.path.join('scripts', '*py')),
