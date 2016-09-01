@@ -10,12 +10,13 @@ class Settings:
         verify_make_dir(config_dir)
 
         default_settings_dict = default_settings_factory()
+        yaml_dict = {}
 
         if os.path.exists(os.path.join(config_dir, 'SETTINGS.yaml')):
             with open(os.path.join(config_dir, 'SETTINGS.yaml')) as inf_handle:
-                loaded_dict = yaml.load(inf_handle)
-                if loaded_dict and submodule in loaded_dict:
-                    sm_dict = loaded_dict[submodule]
+                yaml_dict = yaml.load(inf_handle)
+                if yaml_dict and submodule in yaml_dict:
+                    sm_dict = yaml_dict[submodule]
 
                     if 'default_dir' in sm_dict:
                         self.default_dir = sm_dict['default_dir']
@@ -59,10 +60,10 @@ class Settings:
         if 'log_persists' not in default_settings_dict:
             default_settings_dict['log_persists'] = False
 
-        loaded_dict[submodule] = default_settings_dict
+        yaml_dict[submodule] = default_settings_dict
 
         with open(os.path.join(config_dir, 'SETTINGS.yaml'), 'w') as outf_handle:
-            yaml.dump(loaded_dict, outf_handle)
+            yaml.dump(yaml_dict, outf_handle)
 
         self.settings = default_settings_dict
 
