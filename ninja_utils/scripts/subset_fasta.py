@@ -2,7 +2,6 @@
 import argparse
 import random
 import sys
-import os
 
 from ninja_utils.parsers import FASTA
 
