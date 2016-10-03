@@ -25,7 +25,7 @@ setup(
     #     ninja_utils=ninja_utils.cli.ninja_utils:cli
     # ''',
     entry_points={
-        'console_scripts] [
+        'console_scripts': [
             'soft_mask2hard_mask = ninja_utils.scripts.soft_mask2hard_mask:soft_mask2hard_mask',
             'linearize_fasta = ninja_utils.scripts.linearize_fasta:linearize_fasta',
             'timeit = ninja_utils.scripts.timeit:timeit',
