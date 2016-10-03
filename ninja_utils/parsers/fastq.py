@@ -3,21 +3,21 @@ class FASTQ:
         self.fh = fh
 
     def read(self):
-        line = next(self.fh)
+        line = next(fh)
         while line:
             title = line[1:].strip()
             data = ''
             qualities = ''
             flag = True
-            line = next(self.fh)
-            while not line[0] == '@' and line:
+            line = next(fh)
+            while line and (flag or len(data) != len(qualities)):
                 if line[0] == '+':
                     flag = False
                 elif flag:
                     data += line.strip()
                 else:
                     qualities += line.strip()
-                line = next(self.fh)
+                line = next(fh)
             yield title, data, qualities
 
 
